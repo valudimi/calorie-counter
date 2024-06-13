@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Hello, {{ current_user.username }}!</h1>
+<div class="nav-links">
+    <a href="{{ url_for('calorie_counter') }}" class="btn">Calorie Counter</a>
+    <a href="{{ url_for('bmr_calculator') }}" class="btn">BMR Calculator</a>
+    <a href="{{ url_for('profile') }}" class="btn">Profile</a>
+</div>
+{% if last_bmr %}
+    <h2>Last Calculated BMR: {{ last_bmr }} calories/day</h2>
+{% endif %}
+<h2>Current Consumed Calories: {{ total_calories }} calories</h2>
+<a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+{% endblock %}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Calorie Counter{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function toggleDropdown() {
+            document.getElementById("dropdownMenu").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+            updateMenuButton();
+        }
+
+        function updateMenuButton() {
+            var menuButton = document.querySelector('.dropbtn');
+            if (document.body.classList.contains('dark-mode')) {
+                menuButton.classList.add('dark-mode');
+            } else {
+                menuButton.classList.remove('dark-mode');
+            }
+        }
+
+        function applyInitialTheme() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeToggle').checked = true;
+            }
+            updateMenuButton();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            applyInitialTheme();
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flashes">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <div class="header">
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
+                <div id="dropdownMenu" class="dropdown-content">
+                    <a href="{{ url_for('home') }}">Home</a>
+                    <a href="{{ url_for('calorie_counter') }}">Calorie Counter</a>
+                    <a href="{{ url_for('bmr_calculator') }}">BMR Calculator</a>
+                    <a href="{{ url_for('profile') }}">Profile</a>
+                    <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+                </div>
+            </div>
+            <div class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+                <label for="darkModeToggle"></label>
+            </div>
+        </div>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

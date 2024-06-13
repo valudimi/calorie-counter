@@ -1,0 +1,310 @@
+:root {
+    --background: #ffffff;
+    --text-color: #000000;
+    --input-background: #f4f4f4;
+    --input-border: #ccc; /* Light mode border color */
+    --btn-background: #007BFF;
+    --btn-hover-background: #0056b3;
+    --btn-color: #ffffff;
+    --dark-btn-background: #383838;
+    --dark-btn-hover-background: #2c2c2c;
+    --dark-btn-color: #ffffff;
+    --hover-background: #f1f1f1;
+    --alert-success-background: #dff0d8;
+    --alert-danger-background: #f2dede;
+    --container-background: #ffffff;
+    --dark-container-background: #1e1e1e; /* Darker container background */
+    --dark-background: #121212; /* Darker background */
+}
+
+body.dark-mode {
+    --background: var(--dark-background); /* Darker background */
+    --text-color: #e0e0e0; /* Lighter text color */
+    --input-background: #333333; /* Darker input background */
+    --input-border: #555555; /* Darker border color */
+    --btn-background: var(--dark-btn-background); /* Darker button background */
+    --btn-hover-background: var(--dark-btn-hover-background); /* Darker button hover background */
+    --btn-color: var(--dark-btn-color); /* Button text color */
+    --hover-background: #555555; /* Darker hover background */
+    --alert-success-background: #3c763d;
+    --alert-danger-background: #a94442;
+    --container-background: var(--dark-container-background); /* Darker container background */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+    background: var(--container-background); /* Use container background variable */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Round corners of the container */
+}
+
+h1, h2 {
+    text-align: center;
+    color: var(--text-color);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header p {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.form-container {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+input[type="text"], input[type="number"], input[type="password"], select {
+    width: 100%;
+    padding: 8px;
+    background: var(--input-background);
+    color: var(--text-color);
+    box-sizing: border-box;
+    border-radius: 5px; /* Round corners of input boxes */
+    border: 1px solid var(--input-border); /* Border color */
+}
+
+select {
+    appearance: none; /* Remove default styling */
+    -webkit-appearance: none; /* Remove default styling for Safari */
+    -moz-appearance: none; /* Remove default styling for Firefox */
+    background: var(--input-background);
+    padding-right: 2rem; /* Space for custom arrow */
+}
+
+button, .btn {
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background: var(--btn-background);
+    color: var(--btn-color);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px auto;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover, .btn:hover {
+    background: var(--btn-hover-background);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: var(--input-background);
+    margin: 5px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px; /* Round corners of calorie boxes */
+}
+
+.delete-btn {
+    color: #dc3545;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    text-decoration: underline;
+}
+
+.qr-code {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+.alert-success {
+    background-color: var(--alert-success-background);
+}
+
+.alert-danger {
+    background-color: var(--alert-danger-background);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: var(--background);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px; /* Round corners of the dropdown */
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a.logout {
+    background-color: #dc3545; /* Red background for logout */
+    color: white; /* White text for logout */
+    border-radius: 10px;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--hover-background);
+    border-radius: 10px;
+}
+
+.dropdown-content a.logout:hover {
+    background-color: #c82333; /* Darker red on hover for logout */
+}
+
+.dropdown .dropbtn {
+    background-color: var(--btn-background);
+    color: var(--btn-color);
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+}
+
+.dropdown .dropbtn:hover {
+    background-color: var(--btn-hover-background);
+}
+
+.show {
+    display: block;
+}
+
+.register-link, .login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link p, .login-link p {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.register-link a, .login-link a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover, .login-link a:hover {
+    text-decoration: underline;
+}
+
+.hint {
+    display: none;
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.info-message {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: var(--text-color);
+    padding: 10px;
+    background-color: var(--input-background);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-switch label {
+    background-color: #ccc;
+    border-radius: 12px;
+    padding: 3px;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.toggle-switch label::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s;
+}
+
+.toggle-switch input:checked + label {
+    background-color: #007BFF;
+}
+
+.toggle-switch input:checked + label::after {
+    left: 22px;
+}

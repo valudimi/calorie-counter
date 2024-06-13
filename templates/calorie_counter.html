@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Calorie Counter{% endblock %}
+
+{% block content %}
+<h1>Calorie Counter</h1>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="food">Food Item:</label>
+        <input type="text" id="food" name="food" required>
+    </div>
+    <div class="form-group">
+        <label for="calories">Calories:</label>
+        <input type="number" id="calories" name="calories" required>
+    </div>
+    <button type="submit" class="btn">Add</button>
+</form>
+
+<h2>Food List</h2>
+<ul>
+    {% for food in foods %}
+    <li>{{ food.name }} - {{ food.calories }} calories
+        <a href="{{ url_for('delete', food_id=food.id) }}" class="delete-btn">X</a>
+    </li>
+    {% endfor %}
+</ul>
+<h3>Total Calories: {{ total_calories }}</h3>
+
+<form method="POST" action="{{ url_for('clear_calories') }}">
+    <button type="submit" class="btn btn-danger">Clear All Calories</button>
+</form>
+{% endblock %}

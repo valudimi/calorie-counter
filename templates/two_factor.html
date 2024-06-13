@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Two-Factor Authentication{% endblock %}
+
+{% block content %}
+<h1>Two-Factor Authentication</h1>
+<form method="post" action="{{ url_for('two_factor') }}">
+    <div class="form-group">
+        <label for="token">Authentication Code:</label>
+        <input type="text" id="token" name="token" required>
+    </div>
+    <button type="submit">Verify</button>
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Set Up Two-Factor Authentication{% endblock %}
+
+{% block content %}
+<h1>Set Up Two-Factor Authentication</h1>
+<p>To complete the registration process, please scan the QR code below with your Google Authenticator app:</p>
+<div class="qr-code">
+    <img src="{{ url_for('qr_code_image', user_id=user.id) }}" alt="QR Code">
+</div>
+<p>After scanning the QR code, click the link below to return to the login page:</p>
+<a href="{{ url_for('login') }}" class="btn">Return to Login</a>
+{% endblock %}
